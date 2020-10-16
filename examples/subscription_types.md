@@ -16,12 +16,12 @@ We can use the same basic example from Publishing, below.
 
 ##### Producer
 ```
-#> event-stream-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png
+#> stan-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png
 ```
 
 ##### Consumer
 ```
-#> event-stream-demo consumer
+#> stan-demo consumer
 ```
 
 ![basic example](images/basic-example.gif "Basic Example")
@@ -43,13 +43,13 @@ interruption in the middle.
 
 ##### Producer
 ```
-#> event-stream-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png
+#> stan-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png
 ```
 
 ##### Consumer 1
 We need to set an identifier for the Durable subscription
 ```
-#> event-stream-demo consumer -durable rememberme
+#> stan-demo consumer -durable rememberme
 ```
 
 ![durable subscriber example](images/durable-subscriber.gif "Durable Subscriber Example")
@@ -66,13 +66,13 @@ receives all messages correctly in order regardless of the other consumer.
 
 ##### Producer
 ```
-#> event-stream-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png -batch 100 -ratio 0.12
+#> stan-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png -batch 100 -ratio 0.12
 ```
 
 ##### Consumer 1
 We need to set a unique Client ID for the client, now that we're running more than one
 ```
-#> event-stream-demo consumer -client foo
+#> stan-demo consumer -client foo
 ```
 
 ##### Consumer 2
@@ -80,7 +80,7 @@ We need to set a unique Client ID for the client, now that we're running more th
 On top of a unique Client ID, we also set this consumer to drop 10% of events and lower the amount of time NATS Streaming
 will wait for an acknowledgement before resending messages.
 ```
-#> event-stream-demo consumer -client bar -drop-percent 0.1 -ackwait 1
+#> stan-demo consumer -client bar -drop-percent 0.1 -ackwait 1
 ```
 
 ![multi consumer example](images/multi-consumer.gif "Multi Consumer Example")
@@ -97,21 +97,21 @@ part of the same Queue Group.
 
 ##### Producer
 ```
-#> event-stream-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png
+#> stan-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png
 ```
 
 ##### Consumer 1
 
 We need to set a unique Client ID for the client and specify the name of the Queue Group
 ```
-#> event-stream-demo consumer -client foo -queue-group goonies
+#> stan-demo consumer -client foo -queue-group goonies
 ```
 
 ##### Consumer 2
 
 Again, a unique Client ID is required, but we use the same Queue Group as above
 ```
-#> event-stream-demo consumer -client bar -queue-group goonies
+#> stan-demo consumer -client bar -queue-group goonies
 ```
 
 ![queue group example](images/queue-group.gif "Queue Group Example")

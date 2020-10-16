@@ -55,7 +55,7 @@ the necessary CLI commands are included.
 - [Publishing](examples/publishing.md)
 - [Subscription Types](examples/subscription_types.md)
 - [Errors & Handling Them](examples/errors_and_handling.md)
-- [Replaying Events](examples/)
+- [Replaying Events](examples/starting-replaying-events.md)
 
 ## CLI Commands
 

@@ -20,7 +20,7 @@ force it to drop.
 
 ##### Producer
 ```
-#> event-stream-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png
+#> stan-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png
 ```
 
 ##### Consumer 1
@@ -30,7 +30,7 @@ In a real world scenario, that `ackwait` setting would determine the amount of t
 before the message is resent - for this demo, we want to speed that up so we're not waiting overly long.
 
 ```
-#> event-stream-demo consumer -drop-percent 0.1 -ackwait 1
+#> stan-demo consumer -drop-percent 0.1 -ackwait 1
 ```
 
 ![dropped messages example](images/dropped-messages.gif "Dropped Messages Example")
@@ -47,7 +47,7 @@ as extra / duplicate characters.
 
 ##### Producer
 ```
-#> event-stream-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png
+#> stan-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png
 ```
 
 ##### Consumer 1
@@ -55,7 +55,7 @@ as extra / duplicate characters.
 We add the `ack-fail-percent` option set to 10% and include the `ackwait` option strictly to speed up the timeout. 
 
 ```
-#> event-stream-demo consumer -ack-fail-percent 0.1 -ackwait 1
+#> stan-demo consumer -ack-fail-percent 0.1 -ackwait 1
 ```
 
 ![duplicate messages example](images/failed-acks.gif "Duplicate Messages Example")
@@ -75,7 +75,7 @@ to be redelivered before moving on. See the example below.
 
 ##### Producer
 ```
-#> event-stream-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png
+#> stan-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png
 ```
 
 ##### Consumer 1
@@ -83,7 +83,7 @@ to be redelivered before moving on. See the example below.
 We set the `inflight` option to a value of 1. 
 
 ```
-#> event-stream-demo consumer -drop-percent 0.1 -ackwait 1 -inflight 1
+#> stan-demo consumer -drop-percent 0.1 -ackwait 1 -inflight 1
 ```
 
 ![subscription 1 inflight example](images/sub-1-inflight.gif "Subscriber - Single Inflight Message Example")
@@ -104,7 +104,7 @@ percentage chance to both drop messages and otherwise fail to acknowledge them.
 ##### Producer
 We increase the ratio from the default a little bit here, just to increase the number of events.
 ```
-#> event-stream-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png -ratio 0.1
+#> stan-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png -ratio 0.1
 ```
 
 ##### Consumer 1
@@ -113,7 +113,7 @@ We include both `ack-fail-percent` and `drop-percent` meaning roughly 30% of mes
 also add the new `buffer` option to include our in-memory buffering. 
 
 ```
-#> event-stream-demo consumer -ack-fail-precent 0.1 -drop-percent 0.2 -ackwait 1 -buffer
+#> stan-demo consumer -ack-fail-precent 0.1 -drop-percent 0.2 -ackwait 1 -buffer
 ```
 
 ![buffering example](images/buffer.gif "Subscriber - Buffering Example")

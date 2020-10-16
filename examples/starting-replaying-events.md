@@ -24,13 +24,13 @@ it established its subscription. See below.
 
 ##### Producer
 ```
-#> event-stream-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png
+#> stan-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png
 ```
 
 ##### Consumer
 Wait until after the producer is finished before starting the consumer.
 ```
-#> event-stream-demo consumer
+#> stan-demo consumer
 ```
 
 ![tail subscription](images/tail-subscription.gif "Tail Subscription Example")
@@ -47,13 +47,13 @@ position to start at the beginning of the channel. See below.
 ##### Producer
 Be sure to use a unique subject name, to make sure you are starting with an empty channel.
 ```
-#> event-stream-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png -subject `goonies`
+#> stan-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png -subject `goonies`
 ```
 
 ##### Consumer
 Wait until the producer is finished, then start the Consumer. Ensure we use the same `subject` as above and use the `offset` option set to `all`.
 ```
-#> event-stream-demo consumer -subject goonies -offset all
+#> stan-demo consumer -subject goonies -offset all
 ```
 
 ![all messages subscription](images/all-messages-subscription.gif "All Messages Subscription Example")
@@ -64,20 +64,20 @@ The last use case we can easily demonstrate is the ability to start a Consumer f
 helpful in scenarios where we have identified a failure want to reprocess all events starting from the flagged Sequence ID.
 
 For the sake of the demo here, we can cheat this by knowing that all new Channels start at Sequence ID of 1 and further,
-that the image we've used in all of these demos with the default `ratio` generate 897 events. So, we have our Producer
+that the image we've used in all of these demos with `ratio` of `1.2` will generate 2080 events. So, we have our Producer
 send messages to a new, unique Subject, then have our Consumer start with the `-sequence` option with a number picked
-between 1 and 897.  See below.
+between 1 and 2080.  See below.
 
 ##### Producer
 Be sure to use a unique subject name, to make sure you are starting with an empty channel.
 ```
-#> event-stream-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png -subject goonies-sequence-id
+#> stan-demo producer -remote https://www.pngitem.com/pimgs/m/26-263738_image-result-for-the-goonies-logo-goonies-hd.png -subject goonies-sequences
 ```
 
 ##### Consumer
 Wait until the producer is finished, then start the Consumer. Ensure we use the same `subject` as above and use the `sequence` between 1 and the Total Sent count from the Producer.
 ```
-#> event-stream-demo consumer -subject  goonies-sequence-id -sequence 449
+#> stan-demo consumer -subject  goonies-sequences -sequence 449
 ```
 
 ![sequence offset subscription](images/sequence-offset-subscription.gif "Sequence Offset Subscription Example")
