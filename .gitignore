@@ -1,0 +1,6 @@
+.idea
+vendor
+.serverless
+.bin
+node_modules
+.env

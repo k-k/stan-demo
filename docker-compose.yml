@@ -1,0 +1,13 @@
+version: "3.2"
+
+services:
+  app:
+      build:
+          context: .
+      working_dir: /app
+      volumes:
+          - .:/app
+      command: go mod vendor
+      environment:
+          NATS_CONNECTION_STRING: ${NATS_CONNECTION_STRING}
+          NATS_CLUSTER: ${NATS_CLUSTER}
