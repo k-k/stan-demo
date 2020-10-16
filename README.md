@@ -33,7 +33,7 @@ files or dependencies will be installed on your system.
 
 ### Removing
 
-If you want to remove the binary, you can run clean: `go run clean -i github.com/kmfk/stan-demo` - this
+If you want to remove the binary, you can run clean: `go clean -i github.com/kmfk/stan-demo` - this
 will remove the binary from your `$GOPATH/bin`.
 
 ### Environment Variables
