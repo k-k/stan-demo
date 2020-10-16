@@ -8,9 +8,9 @@ the publishing and subscription behaviors available when using At Least Once del
 simply accomplished by printing a sequences of numbers (and, you know, maybe even more practically) - it seemed more 
 engaging to demonstrate the differences in visual manner.
 
-To do that, this demo uses a neat open source project to take a given image and convert it to ASCII Art - then it streams
-the ASCII characters as individual messages through NATS Streaming.  Consumers of the messages simply print the message 
-body to stdout.
+To do that, this demo uses a [neat open source project](https://github.com/qeesung/image2ascii) to take a given image and 
+convert it to ASCII Art - then it streams the ASCII characters as individual messages through NATS Streaming.  Consumers 
+of the messages simply print the message body to stdout.
 
 We can use the output ASCII Art to show how Queue Groups split messages, failed acks cause duplicates or dropped messages
 can cause out of sequence delivery. This demo also shows how you can do things like buffering to maintain sequence even
