@@ -27,9 +27,8 @@ You can start NATS Streaming with default options locally and it will use in-mem
 
 See: [Running NATS Streaming](https://docs.nats.io/nats-streaming-server/run).
 
-For the demo, you can run `go install github.com/kmfk/stan-demo` and the `stan-demo` binary will be added to your
-`$GOPATH/bin` directory - as long as that's properly been set in your $PATH, you can run the binary directly.  No other
-files or dependencies will be installed on your system.
+For the demo, you can clone the repo and then run `go install github.com/kmfk/stan-demo` and the `stan-demo` binary will 
+be added to your `$GOPATH/bin` directory - as long as that's properly been set in your $PATH, you can run the binary directly.
 
 ### Removing
 
